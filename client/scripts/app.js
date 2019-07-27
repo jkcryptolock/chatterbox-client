@@ -14,6 +14,7 @@ var App = {
       FormView.initialize();
       RoomsView.initialize();
       MessagesView.initialize();
+      // RoomsView.renderRoom();
     })
   },
 
@@ -38,7 +39,7 @@ var App = {
   }
 };
 
-setInterval( function() { App.fetch(()=> {
-  MessagesView.initialize();
-})} , 100)
+// setInterval( function() { App.fetch(()=> {
+//   MessagesView.initialize();
+// })} , 100)
 

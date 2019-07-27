@@ -1,9 +1,10 @@
 var RoomsView = {
 
-  $button: $('#rooms button'),
+  $button: $('#roomsBtn'),
   $select: $('#rooms select'),
 
   initialize: function() {
+    $('select').empty();
     var rooms = [];
     for (var i = 0; i < data.results.length; i++) {
       if (!data.results[i].roomname) {
@@ -17,7 +18,20 @@ var RoomsView = {
     }
   },
 
-  renderRoom: function() {
+  renderRoom: function(room) {
+    // RoomsView.$button.on('click', function() {
+    //   console.log('hello');
+    // })
+
+    console.log('hello');
+
+    $('#chats').empty();
+    for (var i = 0; i < data.results.length; i++) {
+      if (data.results[i].roomname === room) {
+        var $message = MessageView.render(data.results[i]);
+        $('#chats').append($message);
+      }
+    }
   }
 
 };

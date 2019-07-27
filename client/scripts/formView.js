@@ -10,7 +10,7 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
     var text = $('#message').val()
-    var newMsg = new Messages(App.username, text, '')
+    var newMsg = new Messages(App.username, text, 'General')
     Parse.create(newMsg);
     $('#message').val('');
     MessagesView.renderMessage(newMsg);
