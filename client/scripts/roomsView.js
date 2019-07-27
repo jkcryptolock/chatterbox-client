@@ -5,6 +5,7 @@ var RoomsView = {
 
   initialize: function() {
     $('select').empty();
+    $('select').empty().append(`<option value="" disable selected>Choose a room</option>`);
     var rooms = [];
     for (var i = 0; i < data.results.length; i++) {
       if (!data.results[i].roomname) {
