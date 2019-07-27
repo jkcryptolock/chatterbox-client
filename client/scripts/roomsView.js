@@ -1,6 +1,5 @@
 var RoomsView = {
 
-  $button: $('#roomsBtn'),
   $select: $('#rooms select'),
 
   initialize: function() {

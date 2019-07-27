@@ -10,7 +10,13 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
     var text = $('#message').val()
-    var newMsg = new Messages(App.username, text, $('select').val())
+    var roomPost = '';
+    if ($('#addRoom').val()){
+      roomPost = $('#addRoom').val();
+    } else {
+      roomPost = $('select').val();
+    }
+    var newMsg = new Messages(App.username, text, roomPost)
     Parse.create(newMsg);
     $('#message').val('');
     MessagesView.renderMessage(newMsg);
