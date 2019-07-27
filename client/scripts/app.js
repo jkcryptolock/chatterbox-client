@@ -6,26 +6,21 @@ var App = {
 
   initialize: function() {
     App.username = window.location.search.substr(10);
-    debugger;
-    FormView.initialize();
-    RoomsView.initialize();
+    // debugger;
     App.startSpinner();
     App.fetch(()=> {
       App.stopSpinner();
+      // Fetch initial batch of stuff
+      FormView.initialize();
+      RoomsView.initialize();
       MessagesView.initialize();
     })
-
-    // Fetch initial batch of messages
-
   },
-
-  // messages: undefined,
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
 
       // examine the response from the server request:
-      console.log(data);
       window.data = data;
       callback();
 
@@ -42,3 +37,8 @@ var App = {
     FormView.setStatus(false);
   }
 };
+
+setInterval( function() { App.fetch(()=> {
+  MessagesView.initialize();
+})} , 100)
+

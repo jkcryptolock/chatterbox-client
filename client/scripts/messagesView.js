@@ -3,36 +3,7 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
-    // // App.startSpinner();
-    // // App.fetch(App.stopSpinner);
-
-    // var html = ``;
-
-    // $(document).ready(function() {
-    //   var msgList = App.messages;
-
-    //   for (var i = 0; i < msgList.results.length; i++) {
-    //     if (!msgList.results[i].username) {
-    //       msgList.results[i].username = "";
-    //     }
-    //     if (!msgList.results[i].text) {
-    //       msgList.results[i].text = "";
-    //     }
-    //     if (!msgList.results[i].roomname) {
-    //       msgList.results[i].roomname = "";
-    //     }
-    //     html += MessageView.render(msgList.results[i])
-    //     console.log(msgList.results[i]);
-    //   }
-
-    //   MessagesView.$chats.append(html);
-
-    //   });
-    MessagesView.renderMessage();
-  },
-
-  renderMessage: function() {
-
+    $('#chats').empty();
     for (var i = 0; i < data.results.length; i++) {
       if (!data.results[i].username) {
         data.results[i].username = "";
@@ -44,9 +15,25 @@ var MessagesView = {
         data.results[i].roomname = "";
       }
       var $message = MessageView.render(data.results[i]);
-      MessagesView.$chats.append($message);
+      $('#chats').append($message);
     }
+  },
 
+  renderMessage: function(message) {
+    App.fetch(()=> {
+      MessagesView.initialize();
+    })
+    // if (!message.username) {
+    //   message.username = "";
+    // }
+    // if (!message.text) {
+    //   message.text = "";
+    // }
+    // if (!message.roomname) {
+    //   message.roomname = "General";
+    // }
+    // var $message = MessageView.render(message);
+    // $('#chats').prepend($message);
   }
 
 };
